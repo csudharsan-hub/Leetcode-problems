@@ -1,16 +1,20 @@
 class Solution {
     public boolean isSubstringPresent(String s) {
-        String rev=new StringBuilder(s).reverse().toString();
+        int i= 0; 
 
-        for (int i=0 ; i<s.length()-1 ;i++){
-            String sub = s.substring(i,i+2);
-            if(rev.contains(sub)){
-                return true;
+        while(i < s.length()-1){
+            int j = s.length() - 1;
+            while(j>0){
+                if(s.charAt(i) == s.charAt(j) && 
+                    (s.charAt(i+1) == s.charAt(j-1))){
+                        return true;
+                    }
+                else{
+                        j--;
+                    }
             }
+            i++;
         }
-
-
-
         return false;
     }
 }
